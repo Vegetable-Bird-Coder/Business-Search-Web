@@ -1,8 +1,10 @@
 import express from "express";
 import yelpRouter from "./routes/yelp.js";
+import cors from "cors";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.use("/api.yelp.com/v3", yelpRouter);

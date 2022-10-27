@@ -5,7 +5,7 @@ dotenv.config();
 
 async function getGeocoding(location) {
     try {
-        const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location.split(" ").join("+")}&key=${process.env.GEOCODING_TOKEN}`;
+        const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location.split(/, | |,/).join("+")}&key=${process.env.GEOCODING_TOKEN}`;
         const response = await axios.get(url);
         const data = response.data.results[0].geometry.location;
         return data;
@@ -26,6 +26,7 @@ export const getSearchResult = async (req, res, next) => {
         }
         const response = await axios.get(url, { headers: { "Authorization": `Bearer ${process.env.YELP_TOKEN}` } });
         const data = response.data;
+        data.businesses = data.businesses.slice(10);
         res.status(200).json(data);
     } catch (err) {
         next(err);
@@ -46,7 +47,6 @@ export const getDetailInfo = async (req, res, next) => {
 export const autocomplete = async (req, res, next) => {
     try {
         const url = `https://api.yelp.com/v3${req.url}`;
-        console.log(process.env.YELP_TOKEN);
         const response = await axios.get(url, { headers: { "Authorization": `Bearer ${process.env.YELP_TOKEN}` } });
         const data = response.data;
         const result = { autocomplete: [] };
