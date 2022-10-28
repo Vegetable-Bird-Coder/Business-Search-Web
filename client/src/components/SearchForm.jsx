@@ -97,6 +97,7 @@ const SearchForm = () => {
                     <Autocomplete
                         id="keyword"
                         freeSolo
+                        value={formContent.term}
                         options={autoContent}
                         renderInput={(params) => <TextField {...params} required />}
                         onInputChange={handleAutocomplete}

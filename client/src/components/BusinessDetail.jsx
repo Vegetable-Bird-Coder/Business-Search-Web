@@ -1,36 +1,66 @@
 import React from "react";
 
 const BusinessDetail = ({ detailInfo }) => {
+
     return (
         <div className="row">
-            <div className="col-xs-12 col-md-6 d-flex flex-column justify-content-center">
-                <div className="text-center">
-                    <p className="fs-6">Adress</p>
-                    <p></p>
+            <div className="col-xs-12 col-md-6 d-flex flex-column align-items-center text-center">
+                <div>
+                    <p className="fs-5 fw-bold">Adress</p>
+                    <p>{detailInfo.location.display_address.join(",")}</p>
                 </div>
-                <div className="text-center">
-                    <p className="fs-6">Phone</p>
-                    <p></p>
+                <div>
+                    <p className="fs-5 fw-bold">Phone</p>
+                    <p>{detailInfo.display_phone}</p>
                 </div>
-                <div className="text-center">
-                    <p className="fs-6">Status</p>
-                    <p></p>
-                </div>
-            </div>
-            <div className="col-xs-12 col-md-6 d-flex flex-column justify-content-center">
-                <div className="text-center">
-                    <p className="fs-6">Category</p>
-                    <p></p>
-                </div>
-                <div className="text-center">
-                    <p className="fs-6">Price range</p>
-                    <p></p>
-                </div>
-                <div className="text-center">
-                    <p className="fs-6">Visit yelp for more</p>
-                    <p></p>
+                <div>
+                    <p className="fs-5 fw-bold">Status</p>
+                    <p className={detailInfo.is_closed ? "text-danger" : "text-success"}>{detailInfo.is_closed ? "Closed" : "Open Now"}</p>
                 </div>
             </div>
+
+            <div className="col-xs-12 col-md-6 d-flex flex-column text-center">
+                <div>
+                    <p className="fs-5 fw-bold">Category</p>
+                    <p>{detailInfo.categories.map(category => category.title).join(" | ")}</p>
+                </div>
+                <div>
+                    <p className="fs-5 fw-bold">Price range</p>
+                    <p>{detailInfo.price}</p>
+                </div>
+                <div>
+                    <p className="fs-5 fw-bold">Visit yelp for more</p>
+                    <a href={detailInfo.url}>Business link</a>
+                </div>
+            </div>
+
+            <div className="col-12 d-flex flex-column align-items-center">
+                <button className="btn btn-danger mb-3">Reserve Now</button>
+                <p>Share on: </p>
+            </div>
+
+            <div className="col-12">
+                <div id="carouselControls" className="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="false">
+                    <div className="carousel-inner">
+                        {detailInfo.photos.map((photo, index) => {
+                            return (
+                                <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={index} data-bs-interval="100000">
+                                    <img src={photo} className="d-block img-fluid mx-auto" style={{ width: "350px", height: "350px" }} alt="..." />
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <button className="carousel-control-prev mr-3" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
+                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Previous</span>
+                    </button>
+                    <button className="carousel-control-next ml-3" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
+                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+
         </div>
     )
 }
