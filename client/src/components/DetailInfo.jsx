@@ -4,7 +4,7 @@ import { ArrowLeft } from "react-bootstrap-icons";
 import BusinessDetail from "./BusinessDetail";
 import MapLocation from "./MapLocation";
 import Reviews from "./Reviews";
-import { unloadDetailInfo, switchType } from "../redux/DetailInfo";
+import { unloadDetailInfo, switchType } from "../redux/detailInfo";
 import { showBusinessInfo } from "../redux/businessInfo";
 import { LoadScript } from "@react-google-maps/api";
 
@@ -43,7 +43,7 @@ const DetailInfo = ({ detailInfo }) => {
                 </nav >
                 <div className="my-3">
                     {type === "Business details" ? <BusinessDetail detailInfo={detailInfo} /> :
-                        (type === "Map locations" ? (<MapLocation detailInfo={detailInfo} />) : <Reviews />)}
+                        (type === "Map locations" ? (<MapLocation detailInfo={detailInfo} />) : <Reviews id={detailInfo.id} />)}
                 </div>
 
             </div>

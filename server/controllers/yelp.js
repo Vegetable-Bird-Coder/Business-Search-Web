@@ -61,3 +61,14 @@ export const autocomplete = async (req, res, next) => {
         next(err);
     }
 }
+
+export const getReviews = async (req, res, next) => {
+    try {
+        const url = `https://api.yelp.com/v3${req.url}`;
+        const response = await axios.get(url, { headers: { "Authorization": `Bearer ${process.env.YELP_TOKEN}` } });
+        const data = response.data;
+        res.status(200).json(data);
+    } catch (err) {
+        next(err);
+    }
+}

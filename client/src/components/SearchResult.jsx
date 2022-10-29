@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { hideBusinessInfo } from "../redux/businessInfo";
 import axios from "axios";
-import { loadDetailInfo } from "../redux/DetailInfo";
+import { loadDetailInfo } from "../redux/detailInfo";
 
 
 const SearchResult = ({ businessInfo }) => {

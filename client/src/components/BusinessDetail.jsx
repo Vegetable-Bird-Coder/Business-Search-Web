@@ -1,6 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { loadReserve } from "../redux/reserveInfo";
+import Modal from "./Modal";
 
 const BusinessDetail = ({ detailInfo }) => {
+    const { loaded, reserveInfo } = useSelector(state => state.reserveInfo);
+    const [reserved, setReserved] = useState(false);
+
+    const dispath = useDispatch();
+
+    useEffect(() => {
+        if (loaded) {
+            localStorage.setItem('reserveInfo', JSON.stringify(reserveInfo));
+        } else {
+            if (localStorage.getItem('reserveInfo') !== 'undefined') {
+                dispath(loadReserve(JSON.parse(localStorage.getItem('reserveInfo'))));
+            } else {
+                dispath(loadReserve([]));
+                localStorage.setItem('reserveInfo', JSON.stringify(reserveInfo));
+            }
+        }
+
+        if (reserveInfo.length > 0 && reserveInfo.filter(reserve => reserve.id === detailInfo.id)) {
+            setReserved(true);
+        } else {
+            setReserved(false);
+        }
+    }, [reserveInfo]);
 
     return (
         <div className="row">
@@ -35,7 +61,10 @@ const BusinessDetail = ({ detailInfo }) => {
             </div>
 
             <div className="col-12 d-flex flex-column align-items-center">
-                <button className="btn btn-danger mb-3">Reserve Now</button>
+                {reserved ?
+                    <button className="btn btn-primary mb-3">Cancel Reservation</button> :
+                    <button className="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#reserveModal">Reserve Now</button>}
+                <Modal />
                 <p>Share on: </p>
             </div>
 
@@ -60,7 +89,6 @@ const BusinessDetail = ({ detailInfo }) => {
                     </button>
                 </div>
             </div>
-
         </div>
     )
 }
