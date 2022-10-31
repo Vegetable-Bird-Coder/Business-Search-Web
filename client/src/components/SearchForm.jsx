@@ -89,7 +89,7 @@ const SearchForm = () => {
     }
 
     return (
-        <div className="search-form rounded-3 border border-gray-400">
+        <div className="bg-white p-5 rounded-3 border border-gray-400">
             <div className="text-center">
                 <h3>Business search</h3>
             </div>
@@ -105,6 +105,7 @@ const SearchForm = () => {
                         onInputChange={handleAutocomplete}
                         size="small"
                         required
+                        disableClearable
                     />
 
                 </div>

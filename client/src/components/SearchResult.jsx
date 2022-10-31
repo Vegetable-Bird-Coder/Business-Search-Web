@@ -27,34 +27,38 @@ const SearchResult = ({ businessInfo }) => {
     }
 
     return (
-        <table className="table table-striped text-center">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Image</th>
-                    <th>Business Name</th>
-                    <th>Rating</th>
-                    <th>Distance (miles)</th>
-                </tr>
-            </thead>
-            <tbody className="result-table-body">
-                {businessInfo.map((info, index) => {
-                    return (
-                        <tr
-                            key={info.id}
-                            onClick={() => handleClick(info.id)}
-                        >
-                            <th scope="row">{index + 1}</th>
-                            <td><img src={info.image_url} alt={info.name} style={{ width: "100px", height: "100px" }} /></td>
-                            <td>{info.name}</td>
-                            <td>{info.rating}</td>
-                            <td>{(info.distance / 1609.34).toFixed(1)}</td>
-                        </tr>
-                    )
-                })}
-            </tbody>
+        <div className="rounded-3 bg-white">
+            <table className="table table-striped text-center">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Image</th>
+                        <th>Business Name</th>
+                        <th>Rating</th>
+                        <th>Distance (miles)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {businessInfo.map((info, index) => {
+                        return (
+                            <tr
+                                key={info.id}
+                                onClick={() => handleClick(info.id)}
+                                style={{ cursor: 'pointer' }}
+                            >
+                                <th scope="row">{index + 1}</th>
+                                <td><img className="business-img" src={info.image_url} alt={info.name} /></td>
+                                <td>{info.name}</td>
+                                <td>{info.rating}</td>
+                                <td>{(info.distance / 1609.34).toFixed(1)}</td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
 
-        </table>
+            </table>
+        </div>
+
     )
 };
 

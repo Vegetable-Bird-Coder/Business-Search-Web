@@ -4,12 +4,11 @@ import { useSelector } from "react-redux";
 
 const Bookings = () => {
     return (
-        <div className="row d-flex justify-content-center mt-5">
-            <div className="col-6 bg-white rounded border border-gray-400 px-0">
+        <div className="row d-flex justify-content-center mt-3">
+            <div className="col-12 col-md-7">
                 <BookingsTable />
             </div>
         </div>
-
     )
 }
 

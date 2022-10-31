@@ -15,7 +15,7 @@ const Search = () => {
             </div>
 
             {displaySearchResult && (
-                <div className="col-md-9 rounded-3 bg-white mt-5 d-flex justify-content-center px-0">
+                <div className="col-12 col-md-9 mt-5">
                     <SearchResult businessInfo={searchResult} />
                 </div>
             )}

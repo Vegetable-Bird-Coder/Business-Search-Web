@@ -18,7 +18,7 @@ const Reviews = ({ id }) => {
     }, [id])
 
     return (
-        <table className="table table-striped">
+        <table className="table table-striped mb-0">
             <tbody className="result-table-body">
                 {reviews.map(review => {
                     return (
