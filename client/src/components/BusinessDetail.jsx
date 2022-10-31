@@ -1,36 +1,42 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { loadReserve } from "../redux/reserveInfo";
+import { loadReserve, removeReserve } from "../redux/reserveInfo";
 import Modal from "./Modal";
 
 const BusinessDetail = ({ detailInfo }) => {
     const { loaded, reserveInfo } = useSelector(state => state.reserveInfo);
     const [reserved, setReserved] = useState(false);
 
-    const dispath = useDispatch();
+
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (loaded) {
             localStorage.setItem('reserveInfo', JSON.stringify(reserveInfo));
         } else {
-            if (localStorage.getItem('reserveInfo') !== 'undefined') {
-                dispath(loadReserve(JSON.parse(localStorage.getItem('reserveInfo'))));
+            if (localStorage.getItem('reserveInfo') !== 'undefined' && localStorage.getItem('reserveInfo') !== null) {
+                dispatch(loadReserve(JSON.parse(localStorage.getItem('reserveInfo'))));
             } else {
-                dispath(loadReserve([]));
+                dispatch(loadReserve([]));
                 localStorage.setItem('reserveInfo', JSON.stringify(reserveInfo));
             }
         }
 
-        if (reserveInfo.length > 0 && reserveInfo.filter(reserve => reserve.id === detailInfo.id)) {
+        if (reserveInfo.length > 0 && reserveInfo.filter(reserve => reserve.id === detailInfo.id).length > 0) {
             setReserved(true);
         } else {
             setReserved(false);
         }
     }, [reserveInfo]);
 
+    const handleCancel = () => {
+        dispatch(removeReserve(detailInfo.id));
+    }
+
     return (
         <div className="row">
-            <div className="col-xs-12 col-md-6 d-flex flex-column align-items-center text-center">
+            <div className="col-xs-12 col-md-6 d-flex flex-column align-items-center text-center mb-3">
                 <div>
                     <p className="fs-5 fw-bold">Adress</p>
                     <p>{detailInfo.location.display_address.join(",")}</p>
@@ -62,10 +68,11 @@ const BusinessDetail = ({ detailInfo }) => {
 
             <div className="col-12 d-flex flex-column align-items-center">
                 {reserved ?
-                    <button className="btn btn-primary mb-3">Cancel Reservation</button> :
+                    <button className="btn btn-primary mb-3" onClick={handleCancel}>Cancel Reservation</button> :
                     <button className="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#reserveModal">Reserve Now</button>}
-                <Modal />
-                <p>Share on: </p>
+                <Modal businessName={detailInfo.name} businessId={detailInfo.id} />
+                <p>Share on: <a href={`https://twitter.com/intent/tweet?url=${detailInfo.url}`} target="_blank"><i className="bi bi-twitter"></i></a>&nbsp;
+                    <a href={`https://www.facebook.com/sharer/sharer.php?u=${detailInfo.url}`} target="_blank"><i className="bi bi-facebook"></i></a></p>
             </div>
 
             <div className="col-12">

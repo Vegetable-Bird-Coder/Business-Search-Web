@@ -4,6 +4,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from '@mui/material/TextField';
 import { useDispatch } from "react-redux";
 import { loadBusinessInfo, unloadBusinessInfo } from "../redux/businessInfo";
+import { unloadDetailInfo } from "../redux/detailInfo";
 
 const SearchForm = () => {
     const [formContent, setFormContent] = useState({
@@ -84,16 +85,17 @@ const SearchForm = () => {
             longitude: ""
         });
         dispatch(unloadBusinessInfo());
+        dispatch(unloadDetailInfo());
     }
 
     return (
-        <div className="search-form">
+        <div className="search-form rounded-3 border border-gray-400">
             <div className="text-center">
                 <h3>Business search</h3>
             </div>
             <form className="row g-3" onSubmit={handleSubmit}>
                 <div className="col-12">
-                    <label className="form-label" htmlFor="keyword">Keyword</label>
+                    <label className="form-label" htmlFor="keyword">Keyword <span className="required-asterisk text-danger">*</span></label>
                     <Autocomplete
                         id="keyword"
                         freeSolo
@@ -120,7 +122,7 @@ const SearchForm = () => {
                 </div>
 
                 <div className="col-md-6" htmlFor="category">
-                    <label className="form-label">Category</label>
+                    <label className="form-label">Category <span className="required-asterisk text-danger">*</span></label>
                     <select
                         className="form-select"
                         id="category"
@@ -137,7 +139,7 @@ const SearchForm = () => {
                 </div>
 
                 <div className="col-12">
-                    <label className="form-label" htmlFor="location">Location</label>
+                    <label className="form-label" htmlFor="location">Location <span className="required-asterisk text-danger">*</span></label>
                     <input
                         className="form-control"
                         disabled={formContent.autoLoc}

@@ -9,20 +9,20 @@ const Search = () => {
     const { searchResult, displaySearchResult } = useSelector(state => state.businessInfo);
     const { detailContent, displayDetailContent } = useSelector(state => state.detailInfo);
     return (
-        <div className="row d-flex flex-column align-items-center">
+        <div className="row d-flex flex-column align-items-center mt-5">
             <div className="col-12 col-md-6 mb-5">
                 <SearchForm />
             </div>
 
             {displaySearchResult && (
-                <div className="col-md-9 search-result rounded mt-5 d-flex justify-content-center">
+                <div className="col-md-9 rounded-3 bg-white mt-5 d-flex justify-content-center px-0">
                     <SearchResult businessInfo={searchResult} />
                 </div>
             )}
 
             {displayDetailContent && (
                 <div className="col-md-7 mb-5">
-                        <DetailInfo detailInfo={detailContent} />
+                    <DetailInfo detailInfo={detailContent} />
                 </div>
             )}
 

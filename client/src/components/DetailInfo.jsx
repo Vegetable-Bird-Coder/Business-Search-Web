@@ -6,7 +6,6 @@ import MapLocation from "./MapLocation";
 import Reviews from "./Reviews";
 import { unloadDetailInfo, switchType } from "../redux/detailInfo";
 import { showBusinessInfo } from "../redux/businessInfo";
-import { LoadScript } from "@react-google-maps/api";
 
 const DetailInfo = ({ detailInfo }) => {
     const { type } = useSelector(state => state.detailInfo);
@@ -30,7 +29,7 @@ const DetailInfo = ({ detailInfo }) => {
     }
 
     return (
-        <div className="container-fluid border border-dark">
+        <div className="container-fluid rounded-3 bg-white">
             <ArrowLeft onClick={handleBack} /><br />
             <div className="d-flex flex-column justify-content-center ">
                 <h3 className="text-center">{detailInfo.name}</h3>

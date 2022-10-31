@@ -1,8 +1,65 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { loadReserve, removeReserve } from "../redux/reserveInfo";
 
 const BookingsTable = () => {
+    const { num, reserveInfo, loaded } = useSelector(state => state.reserveInfo);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (loaded) {
+            localStorage.setItem('reserveInfo', JSON.stringify(reserveInfo));
+        } else {
+            if (localStorage.getItem('reserveInfo') !== 'undefined' && localStorage.getItem('reserveInfo') !== null) {
+                dispatch(loadReserve(JSON.parse(localStorage.getItem('reserveInfo'))));
+            } else {
+                dispatch(loadReserve([]));
+                localStorage.setItem('reserveInfo', JSON.stringify(reserveInfo));
+            }
+        }
+    }, [reserveInfo])
+
+    if (num === 0) {
+        return (
+            <div className="text-center bg-white rounded text-danger fw-bold">No reservations to show</div>
+        )
+    };
+
+    const handleCancel = (id) => {
+        alert("Reservation cancelled!");
+        dispatch(removeReserve(id));
+    }
+
     return (
-        <div>Bookings Table</div>
+        <table className="table text-center mb-0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Business Name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>E-mail</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody className="result-table-body">
+                {reserveInfo.map((reserve, index) => {
+                    return (
+                        <tr
+                            key={reserve.id}
+                        >
+                            <th scope="row">{index + 1}</th>
+                            <td>{reserve.name}</td>
+                            <td>{reserve.date}</td>
+                            <td>{reserve.time}</td>
+                            <td>{reserve.email}</td>
+                            <td><i className="bi bi-trash" onClick={() => handleCancel(reserve.id)}></i></td>
+                        </tr>
+                    )
+                })}
+            </tbody>
+
+        </table>
     )
 };
 

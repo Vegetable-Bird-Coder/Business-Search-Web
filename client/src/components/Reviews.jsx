@@ -9,7 +9,7 @@ const Reviews = ({ id }) => {
             try {
                 const url = `http://localhost:8800/api.yelp.com/v3/businesses/${id}/reviews`;
                 const res = await axios.get(url);
-                setReviews(res.data.reviews);
+                setReviews(res.data);
             } catch (err) {
                 console.log(err);
             }

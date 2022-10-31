@@ -27,7 +27,7 @@ const SearchResult = ({ businessInfo }) => {
     }
 
     return (
-        <table className="table table-striped">
+        <table className="table table-striped text-center">
             <thead>
                 <tr>
                     <th>#</th>

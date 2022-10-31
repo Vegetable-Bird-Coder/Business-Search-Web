@@ -26,7 +26,7 @@ export const getSearchResult = async (req, res, next) => {
         }
         const response = await axios.get(url, { headers: { "Authorization": `Bearer ${process.env.YELP_TOKEN}` } });
         const data = response.data;
-        data.businesses = data.businesses.slice(10);
+        data.businesses = data.businesses.slice(0, 10);
         res.status(200).json(data);
     } catch (err) {
         next(err);
@@ -66,7 +66,7 @@ export const getReviews = async (req, res, next) => {
     try {
         const url = `https://api.yelp.com/v3${req.url}`;
         const response = await axios.get(url, { headers: { "Authorization": `Bearer ${process.env.YELP_TOKEN}` } });
-        const data = response.data;
+        const data = response.data.reviews.slice(0, 3);
         res.status(200).json(data);
     } catch (err) {
         next(err);
