@@ -88,7 +88,7 @@ const BusinessDetail = ({ detailInfo }) => {
                     <button className="btn btn-primary mb-3" onClick={handleCancel}>Cancel Reservation</button> :
                     <button className="btn btn-danger mb-3" onClick={() => dispatch(openModal())}>Reserve Now</button>}
                 {showModal && <Modal businessName={detailInfo.name} businessId={detailInfo.id} />}
-                <p>Share on: <a href={`https://twitter.com/intent/tweet?url=${detailInfo.url}`} target="_blank"><i className="bi bi-twitter"></i></a>&nbsp;
+                <p>Share on: <a href={`https://twitter.com/intent/tweet?text=${'Check ' + detailInfo.name + ' on Yelp.'}&url=${detailInfo.url}`} target="_blank"><i className="bi bi-twitter"></i></a>&nbsp;
                     <a href={`https://www.facebook.com/sharer/sharer.php?u=${detailInfo.url}`} target="_blank"><i className="bi bi-facebook"></i></a></p>
             </div>
 
