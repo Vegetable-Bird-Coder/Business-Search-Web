@@ -61,7 +61,7 @@ const SearchForm = () => {
         e.preventDefault();
         const term = `term=${formContent.term}`;
         const categories = `&&categories=${formContent.category}`;
-        const radius = `&&radius=${formContent.radius === "" ? "10" : formContent.radius}`;
+        const radius = `&&radius=${formContent.radius === "" ? "10" : Math.min(10, parseInt(formContent.radius))}`;
         const location = `${formContent.location !== "" ? "&&location=" + formContent.location : ""}`;
         const latitude = `${formContent.latitude !== "" ? "&&latitude=" + formContent.latitude : ""}`;
         const longitude = `${formContent.longitude !== "" ? "&&longitude=" + formContent.longitude : ""}`;

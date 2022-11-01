@@ -10,7 +10,10 @@ const SearchResult = ({ businessInfo }) => {
 
     if (businessInfo.length === 0) {
         return (
-            <div className="text-center bg-white col-4 rounded text-danger fw-bold">No results available</div>
+            <div className="row d-flex justify-content-center">
+                <div className="col-8 col-md-4 text-center bg-white rounded text-danger fw-bold">No results available</div>
+            </div>
+
         )
     };
 

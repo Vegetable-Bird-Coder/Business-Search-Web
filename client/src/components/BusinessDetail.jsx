@@ -38,33 +38,49 @@ const BusinessDetail = ({ detailInfo }) => {
     return (
         <div className="row">
             <div className="col-xs-12 col-md-6 d-flex flex-column align-items-center text-center mb-3">
-                <div>
-                    <p className="fs-5 fw-bold">Adress</p>
-                    <p>{detailInfo.location.display_address.join(", ")}</p>
-                </div>
-                <div>
-                    <p className="fs-5 fw-bold">Phone</p>
-                    <p>{detailInfo.display_phone}</p>
-                </div>
-                <div>
-                    <p className="fs-5 fw-bold">Status</p>
-                    <p className={detailInfo.is_closed ? "text-danger" : "text-success"}>{detailInfo.is_closed ? "Closed" : "Open Now"}</p>
-                </div>
+                {detailInfo.location.display_address.length > 0 ? (
+                    <div>
+                        <p className="fs-5 fw-bold">Adress</p>
+                        <p>{detailInfo.location.display_address.join(", ")}</p>
+                    </div>
+                ) : null}
+                {detailInfo.display_phone ? (
+                    <div>
+                        <p className="fs-5 fw-bold">Phone</p>
+                        <p>{detailInfo.display_phone}</p>
+                    </div>
+                ) : null}
+
+                {detailInfo.is_closed !== undefined ? (
+                    <div>
+                        <p className="fs-5 fw-bold">Status</p>
+                        <p className={detailInfo.is_closed ? "text-danger" : "text-success"}>{detailInfo.is_closed ? "Closed" : "Open Now"}</p>
+                    </div>
+                ) : null}
             </div>
 
             <div className="col-xs-12 col-md-6 d-flex flex-column text-center">
-                <div>
-                    <p className="fs-5 fw-bold">Category</p>
-                    <p>{detailInfo.categories.map(category => category.title).join(" | ")}</p>
-                </div>
-                <div>
-                    <p className="fs-5 fw-bold">Price range</p>
-                    <p>{detailInfo.price}</p>
-                </div>
-                <div>
-                    <p className="fs-5 fw-bold">Visit yelp for more</p>
-                    <a href={detailInfo.url}>Business link</a>
-                </div>
+                {detailInfo.categories.length > 0 ? (
+                    <div>
+                        <p className="fs-5 fw-bold">Category</p>
+                        <p>{detailInfo.categories.map(category => category.title).join(" | ")}</p>
+                    </div>
+                ) : null}
+
+                {detailInfo.price ? (
+                    <div>
+                        <p className="fs-5 fw-bold">Price range</p>
+                        <p>{detailInfo.price}</p>
+                    </div>
+                ) : null}
+
+                {detailInfo.url ? (
+                    <div>
+                        <p className="fs-5 fw-bold">Visit yelp for more</p>
+                        <a href={detailInfo.url} target="_blank">Business link</a>
+                    </div>
+                ) : null}
+
             </div>
 
             <div className="col-12 d-flex flex-column align-items-center">
@@ -81,7 +97,7 @@ const BusinessDetail = ({ detailInfo }) => {
                     <div className="carousel-inner">
                         {detailInfo.photos.map((photo, index) => {
                             return (
-                                <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={index} data-bs-interval="100000">
+                                <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={index} data-bs-interval="6000">
                                     <img src={photo} className="d-block img-fluid mx-auto" style={{ width: "350px", height: "350px" }} alt="..." />
                                 </div>
                             )

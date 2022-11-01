@@ -15,13 +15,13 @@ const Search = () => {
             </div>
 
             {displaySearchResult && (
-                <div className="col-12 col-md-9 mt-5">
+                <div className="col-12 col-md-9">
                     <SearchResult businessInfo={searchResult} />
                 </div>
             )}
 
             {displayDetailContent && (
-                <div className="col-md-7 mb-5">
+                <div className="col-12 col-md-8 mb-5">
                     <DetailInfo detailInfo={detailContent} />
                 </div>
             )}

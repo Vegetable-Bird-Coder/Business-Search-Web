@@ -7,7 +7,7 @@ async function getGeocoding(location) {
     try {
         const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location.split(/, | |,/).join("+")}&key=${process.env.GEOCODING_TOKEN}`;
         const response = await axios.get(url);
-        const data = response.data.results[0].geometry.location;
+        const data = response.data.results.length > 0 ? response.data.results[0].geometry.location : null;
         return data;
     } catch (err) {
         console.log(err);
@@ -21,7 +21,13 @@ export const getSearchResult = async (req, res, next) => {
         if (!req.query.location) {
             url += `&latitude=${req.query.latitude}&longitude=${req.query.longitude}`;
         } else {
-            const geocoding = await getGeocoding(req.query.location);
+            let geocoding = await getGeocoding(req.query.location);
+            if (geocoding === null) {
+                geocoding = {
+                    lat: -82.578062,
+                    lng: 7.154618
+                }
+            }
             url += `&latitude=${geocoding.lat}&longitude=${geocoding.lng}`;
         }
         const response = await axios.get(url, { headers: { "Authorization": `Bearer ${process.env.YELP_TOKEN}` } });
