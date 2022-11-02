@@ -40,12 +40,12 @@ const BookingsTable = () => {
                 <table className="table text-center mb-0 table-hover" style={{ maxWidth: 'none' }}>
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Business Name</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>E-mail</th>
-                            <th></th>
+                            <th className="align-middle">#</th>
+                            <th className="align-middle">Business Name</th>
+                            <th className="align-middle">Date</th>
+                            <th className="align-middle">Time</th>
+                            <th className="align-middle">E-mail</th>
+                            <th className="align-middle"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,17 +54,16 @@ const BookingsTable = () => {
                                 <tr
                                     key={reserve.id}
                                 >
-                                    <th scope="row">{index + 1}</th>
-                                    <td>{reserve.name}</td>
-                                    <td>{reserve.date}</td>
-                                    <td>{reserve.time}</td>
-                                    <td>{reserve.email}</td>
-                                    <td><i className="bi bi-trash" onClick={() => handleCancel(reserve.id)}></i></td>
+                                    <th className="align-middle" scope="row">{index + 1}</th>
+                                    <td className="align-middle">{reserve.name}</td>
+                                    <td className="align-middle">{reserve.date}</td>
+                                    <td className="align-middle">{reserve.time}</td>
+                                    <td className="align-middle">{reserve.email}</td>
+                                    <td className="align-middle"><i className="bi bi-trash" onClick={() => handleCancel(reserve.id)}></i></td>
                                 </tr>
                             )
                         })}
                     </tbody>
-
                 </table>
             </div>
         </div>

@@ -35,11 +35,11 @@ const SearchResult = ({ businessInfo }) => {
             <table className="table table-striped text-center">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Image</th>
-                        <th>Business Name</th>
-                        <th>Rating</th>
-                        <th>Distance (miles)</th>
+                        <th className="align-middle">#</th>
+                        <th className="align-middle">Image</th>
+                        <th className="align-middle">Business Name</th>
+                        <th className="align-middle">Rating</th>
+                        <th className="align-middle">Distance (miles)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,12 +49,13 @@ const SearchResult = ({ businessInfo }) => {
                                 key={info.id}
                                 onClick={() => handleClick(info.id)}
                                 style={{ cursor: 'pointer' }}
+                                className="align-middle"
                             >
                                 <th scope="row">{index + 1}</th>
-                                <td><img className="business-img" src={info.image_url} alt={info.name} /></td>
-                                <td>{info.name}</td>
-                                <td>{info.rating}</td>
-                                <td>{(info.distance / 1609.34).toFixed(1)}</td>
+                                <td className="align-middle"><img className="business-img" src={info.image_url} alt={info.name} /></td>
+                                <td className="align-middle">{info.name}</td>
+                                <td className="align-middle">{info.rating}</td>
+                                <td className="align-middle">{(info.distance / 1609.34).toFixed(1)}</td>
                             </tr>
                         )
                     })}
