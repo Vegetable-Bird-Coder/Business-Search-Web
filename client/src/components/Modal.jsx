@@ -99,7 +99,13 @@ const Modal = ({ businessName, businessId }) => {
                                     <Form.Group as={Col} xs="7" controlId="time">
                                         <Form.Label>Time</Form.Label>
                                         <div className="d-flex align-items-center">
-                                            <Form.Select style={{ backgroundImage: `${showSelectHourImg ? 'url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 12%27 width=%2712%27 height=%2712%27 fill=%27none%27 stroke=%27%23dc3545%27%3e%3ccircle cx=%276%27 cy=%276%27 r=%274.5%27/%3e%3cpath stroke-linejoin=%27round%27 d=%27M5.8 3.6h.4L6 6.5z%27/%3e%3ccircle cx=%276%27 cy=%278.2%27 r=%27.6%27 fill=%27%23dc3545%27 stroke=%27none%27/%3e%3c/svg%3e")' : 'none'}`, backgroundSize: 'calc(.75em + .375rem) calc(.75em + .375rem)' }} required onChange={e => setHour(e.target.value)}>
+                                            <Form.Select
+                                                style={{
+                                                    backgroundImage: `${showSelectHourImg ? 'url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 12%27 width=%2712%27 height=%2712%27 fill=%27none%27 stroke=%27%23dc3545%27%3e%3ccircle cx=%276%27 cy=%276%27 r=%274.5%27/%3e%3cpath stroke-linejoin=%27round%27 d=%27M5.8 3.6h.4L6 6.5z%27/%3e%3ccircle cx=%276%27 cy=%278.2%27 r=%27.6%27 fill=%27%23dc3545%27 stroke=%27none%27/%3e%3c/svg%3e")' : ''}`,
+                                                    backgroundSize: `${showSelectHourImg ? 'calc(.75em + .375rem) calc(.75em + .375rem)' : "0px 0px"}`
+                                                }}
+                                                required
+                                                onChange={e => setHour(e.target.value)}>
                                                 <option hidden style={{ diplay: 'none' }}></option>
                                                 <option value="10">10</option>
                                                 <option value="11">11</option>
@@ -111,7 +117,13 @@ const Modal = ({ businessName, businessId }) => {
                                                 <option value="17">17</option>
                                             </Form.Select>
                                             &nbsp;:&nbsp;
-                                            <Form.Select className="form-select" style={{ backgroundImage: `${showSelectMinuteImg ? 'url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 12%27 width=%2712%27 height=%2712%27 fill=%27none%27 stroke=%27%23dc3545%27%3e%3ccircle cx=%276%27 cy=%276%27 r=%274.5%27/%3e%3cpath stroke-linejoin=%27round%27 d=%27M5.8 3.6h.4L6 6.5z%27/%3e%3ccircle cx=%276%27 cy=%278.2%27 r=%27.6%27 fill=%27%23dc3545%27 stroke=%27none%27/%3e%3c/svg%3e")' : 'none'}`, backgroundSize: 'calc(.75em + .375rem) calc(.75em + .375rem)' }} required onChange={e => setMinute(e.target.value)}>
+                                            <Form.Select
+                                                style={{
+                                                    backgroundImage: `${showSelectMinuteImg ? 'url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 12%27 width=%2712%27 height=%2712%27 fill=%27none%27 stroke=%27%23dc3545%27%3e%3ccircle cx=%276%27 cy=%276%27 r=%274.5%27/%3e%3cpath stroke-linejoin=%27round%27 d=%27M5.8 3.6h.4L6 6.5z%27/%3e%3ccircle cx=%276%27 cy=%278.2%27 r=%27.6%27 fill=%27%23dc3545%27 stroke=%27none%27/%3e%3c/svg%3e")' : ''}`,
+                                                    backgroundSize: `${showSelectMinuteImg ? 'calc(.75em + .375rem) calc(.75em + .375rem)' : "0px 0px"}`
+                                                }}
+                                                required
+                                                onChange={e => setMinute(e.target.value)}>
                                                 <option hidden></option>
                                                 <option value="00">00</option>
                                                 <option value="15">15</option>

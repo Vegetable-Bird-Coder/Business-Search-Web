@@ -38,49 +38,37 @@ const BusinessDetail = ({ detailInfo }) => {
     return (
         <div className="row">
             <div className="col-xs-12 col-md-6 d-flex flex-column align-items-center text-center mb-3">
-                {detailInfo.location.display_address.length > 0 ? (
-                    <div>
-                        <p className="fs-5 fw-bold">Adress</p>
-                        <p>{detailInfo.location.display_address.join(", ")}</p>
-                    </div>
-                ) : null}
-                {detailInfo.display_phone ? (
-                    <div>
-                        <p className="fs-5 fw-bold">Phone</p>
-                        <p>{detailInfo.display_phone}</p>
-                    </div>
-                ) : null}
+                <div>
+                    <p className="fs-5 fw-bold">Adress</p>
+                    <p>{detailInfo.location.display_address.length > 0 ? detailInfo.location.display_address.join(", ") : 'N/A'}</p>
+                </div>
 
-                {detailInfo.is_closed !== undefined ? (
-                    <div>
-                        <p className="fs-5 fw-bold">Status</p>
-                        <p className={detailInfo.is_closed ? "text-danger" : "text-success"}>{detailInfo.is_closed ? "Closed" : "Open Now"}</p>
-                    </div>
-                ) : null}
+                <div>
+                    <p className="fs-5 fw-bold">Phone</p>
+                    <p>{detailInfo.display_phone ? detailInfo.display_phone : 'N/A'}</p>
+                </div>
+
+                <div>
+                    <p className="fs-5 fw-bold">Status</p>
+                    <p className={detailInfo.is_closed !== undefined ? (detailInfo.is_closed ? "text-danger" : "text-success") : ""}>{detailInfo.is_closed !== undefined ? (detailInfo.is_closed ? "Closed" : "Open Now") : 'N/A'}</p>
+                </div>
             </div>
 
             <div className="col-xs-12 col-md-6 d-flex flex-column text-center">
-                {detailInfo.categories.length > 0 ? (
-                    <div>
-                        <p className="fs-5 fw-bold">Category</p>
-                        <p>{detailInfo.categories.map(category => category.title).join(" | ")}</p>
-                    </div>
-                ) : null}
+                <div>
+                    <p className="fs-5 fw-bold">Category</p>
+                    <p>{detailInfo.categories.length > 0 ? detailInfo.categories.map(category => category.title).join(" | ") : 'N/A'}</p>
+                </div>
 
-                {detailInfo.price ? (
-                    <div>
-                        <p className="fs-5 fw-bold">Price range</p>
-                        <p>{detailInfo.price}</p>
-                    </div>
-                ) : null}
+                <div>
+                    <p className="fs-5 fw-bold">Price range</p>
+                    <p>{detailInfo.price ? detailInfo.price : 'N/A'}</p>
+                </div>
 
-                {detailInfo.url ? (
-                    <div>
-                        <p className="fs-5 fw-bold">Visit yelp for more</p>
-                        <a href={detailInfo.url} target="_blank">Business link</a>
-                    </div>
-                ) : null}
-
+                <div>
+                    <p className="fs-5 fw-bold">Visit yelp for more</p>
+                    {detailInfo.url ? <a href={detailInfo.url} target="_blank">Business link</a> : 'N/A'}
+                </div>
             </div>
 
             <div className="col-12 d-flex flex-column align-items-center">
