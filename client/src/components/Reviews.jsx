@@ -3,11 +3,12 @@ import axios from "axios";
 
 const Reviews = ({ id }) => {
     const [reviews, setReviews] = useState([]);
+    const prefix = 'http://localhost:8800';
 
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const url = `http://localhost:8800/api.yelp.com/v3/businesses/${id}/reviews`;
+                const url = `${prefix}/api.yelp.com/v3/businesses/${id}/reviews`;
                 const res = await axios.get(url);
                 setReviews(res.data);
             } catch (err) {

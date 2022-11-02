@@ -19,6 +19,6 @@ app.use((err, req, res, next) => {
     });
 });
 
-app.listen(8800, () => {
+app.listen(process.env.PORT || 8800, () => {
     console.log("Listening on 8800");
 })

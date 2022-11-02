@@ -21,10 +21,12 @@ const SearchForm = () => {
 
     const dispatch = useDispatch();
 
+    const prefix = 'http://localhost:8800';
+
     useEffect(() => {
         const fetchAutoComplete = async () => {
             try {
-                const res = await axios.get(`http://localhost:8800/api.yelp.com/v3/autocomplete?text=${formContent.term}`);
+                const res = await axios.get(`${prefix}/api.yelp.com/v3/autocomplete?text=${formContent.term}`);
                 setAutoContent(res.data.autocomplete);
             } catch (err) {
                 console.log(err);
@@ -65,7 +67,7 @@ const SearchForm = () => {
         const location = `${formContent.location !== "" ? "&&location=" + formContent.location : ""}`;
         const latitude = `${formContent.latitude !== "" ? "&&latitude=" + formContent.latitude : ""}`;
         const longitude = `${formContent.longitude !== "" ? "&&longitude=" + formContent.longitude : ""}`;
-        const url = "http://localhost:8800/api.yelp.com/v3/businesses/search?" + term + categories + radius + location + latitude + longitude;
+        const url = prefix + "/api.yelp.com/v3/businesses/search?" + term + categories + radius + location + latitude + longitude;
         try {
             const res = await axios.get(url);
             dispatch(loadBusinessInfo(res.data.businesses));

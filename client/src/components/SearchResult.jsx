@@ -16,11 +16,12 @@ const SearchResult = ({ businessInfo }) => {
 
         )
     };
+    const prefix = 'http://localhost:8800';
 
     const handleClick = async (id) => {
 
         try {
-            const res = await axios.get(`http://localhost:8800/api.yelp.com/v3/businesses/${id}`);
+            const res = await axios.get(`${prefix}/api.yelp.com/v3/businesses/${id}`);
             dispatch(loadDetailInfo(res.data))
             dispatch(hideBusinessInfo());
 

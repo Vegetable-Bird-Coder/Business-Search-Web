@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import BookingsTable from "../components/BookingsTable";
-import { useSelector } from "react-redux";
 
 const Bookings = () => {
     return (

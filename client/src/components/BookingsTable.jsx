@@ -36,8 +36,8 @@ const BookingsTable = () => {
     return (
         <div className="text-center">
             <h3 className="mb-4">List of your reservations</h3>
-            <div className="bg-white rounded border border-gray-400 table-responsive-md">
-                <table className="table text-center mb-0 table-hover">
+            <div className="bg-white rounded border border-gray-400 table-responsive">
+                <table className="table text-center mb-0 table-hover" style={{ maxWidth: 'none' }}>
                     <thead>
                         <tr>
                             <th>#</th>
