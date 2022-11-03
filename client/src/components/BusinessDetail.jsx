@@ -37,7 +37,7 @@ const BusinessDetail = ({ detailInfo }) => {
 
     return (
         <div className="row">
-            <div className="col-xs-12 col-md-6 d-flex flex-column align-items-center text-center mb-3">
+            <div className="col-xs-12 col-md-6 d-flex flex-column align-items-center text-center">
                 <div>
                     <p className="fs-5 fw-bold">Adress</p>
                     <p>{detailInfo.location.display_address.length > 0 ? detailInfo.location.display_address.join(", ") : 'N/A'}</p>
@@ -71,7 +71,7 @@ const BusinessDetail = ({ detailInfo }) => {
                 </div>
             </div>
 
-            <div className="col-12 d-flex flex-column align-items-center">
+            <div className="col-12 d-flex flex-column align-items-center mt-3">
                 {reserved ?
                     <button className="btn btn-primary mb-3" onClick={handleCancel}>Cancel Reservation</button> :
                     <button className="btn btn-danger mb-3" onClick={() => dispatch(openModal())}>Reserve Now</button>}

@@ -88,7 +88,12 @@ const Modal = ({ businessName, businessId }) => {
                                 <Row className="mb-3">
                                     <Form.Group as={Col} md="12" controlId="date">
                                         <Form.Label>Date</Form.Label>
-                                        <Form.Control type="date" required onChange={e => setDate(e.target.value)} min={minTime} />
+                                        <Form.Control
+                                            type="date"
+                                            required
+                                            onChange={e => setDate(e.target.value)}
+                                            min={minTime}
+                                        />
                                         <Form.Control.Feedback type="invalid">
                                             Date is required
                                         </Form.Control.Feedback>
@@ -96,13 +101,14 @@ const Modal = ({ businessName, businessId }) => {
                                 </Row>
 
                                 <Row className="mb-3">
-                                    <Form.Group as={Col} xs="7" controlId="time">
-                                        <Form.Label>Time</Form.Label>
+                                    <Form.Label>Time</Form.Label>
+                                    <Form.Group as={Col} xs="9" controlId="time">
+
                                         <div className="d-flex align-items-center">
                                             <Form.Select
                                                 style={{
-                                                    backgroundImage: `${showSelectHourImg ? 'url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 12%27 width=%2712%27 height=%2712%27 fill=%27none%27 stroke=%27%23dc3545%27%3e%3ccircle cx=%276%27 cy=%276%27 r=%274.5%27/%3e%3cpath stroke-linejoin=%27round%27 d=%27M5.8 3.6h.4L6 6.5z%27/%3e%3ccircle cx=%276%27 cy=%278.2%27 r=%27.6%27 fill=%27%23dc3545%27 stroke=%27none%27/%3e%3c/svg%3e")' : ''}`,
-                                                    backgroundSize: `${showSelectHourImg ? 'calc(.75em + .375rem) calc(.75em + .375rem)' : "0px 0px"}`
+                                                    backgroundImage: `${showSelectHourImg ? 'url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 12%27 width=%2712%27 height=%2712%27 fill=%27none%27 stroke=%27%23dc3545%27%3e%3ccircle cx=%276%27 cy=%276%27 r=%274.5%27/%3e%3cpath stroke-linejoin=%27round%27 d=%27M5.8 3.6h.4L6 6.5z%27/%3e%3ccircle cx=%276%27 cy=%278.2%27 r=%27.6%27 fill=%27%23dc3545%27 stroke=%27none%27/%3e%3c/svg%3e")' : 'none'}`,
+                                                    backgroundSize: `${showSelectHourImg ? 'calc(.75em + .375rem) calc(.75em + .375rem)' : "0px 0px"}`,
                                                 }}
                                                 required
                                                 onChange={e => setHour(e.target.value)}>
@@ -119,7 +125,7 @@ const Modal = ({ businessName, businessId }) => {
                                             &nbsp;:&nbsp;
                                             <Form.Select
                                                 style={{
-                                                    backgroundImage: `${showSelectMinuteImg ? 'url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 12%27 width=%2712%27 height=%2712%27 fill=%27none%27 stroke=%27%23dc3545%27%3e%3ccircle cx=%276%27 cy=%276%27 r=%274.5%27/%3e%3cpath stroke-linejoin=%27round%27 d=%27M5.8 3.6h.4L6 6.5z%27/%3e%3ccircle cx=%276%27 cy=%278.2%27 r=%27.6%27 fill=%27%23dc3545%27 stroke=%27none%27/%3e%3c/svg%3e")' : ''}`,
+                                                    backgroundImage: `${showSelectMinuteImg ? 'url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 12%27 width=%2712%27 height=%2712%27 fill=%27none%27 stroke=%27%23dc3545%27%3e%3ccircle cx=%276%27 cy=%276%27 r=%274.5%27/%3e%3cpath stroke-linejoin=%27round%27 d=%27M5.8 3.6h.4L6 6.5z%27/%3e%3ccircle cx=%276%27 cy=%278.2%27 r=%27.6%27 fill=%27%23dc3545%27 stroke=%27none%27/%3e%3c/svg%3e")' : 'none'}`,
                                                     backgroundSize: `${showSelectMinuteImg ? 'calc(.75em + .375rem) calc(.75em + .375rem)' : "0px 0px"}`
                                                 }}
                                                 required
