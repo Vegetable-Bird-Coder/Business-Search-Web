@@ -1,7 +1,11 @@
+html {
+    height: 100%;
+}
+
 body {
-    background: url(./city.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background-image: linear-gradient(to top, rgba(143, 160, 198, 0.73), rgba(255, 255, 255, 0.52)), url(./city.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
+    background-attachment: fixed;
 }

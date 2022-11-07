@@ -108,6 +108,7 @@ const SearchForm = () => {
                         size="small"
                         required
                         disableClearable
+                        ListboxProps={{ style: { maxHeight: 200, overflow: 'auto' } }}
                     />
 
                 </div>

@@ -52,7 +52,7 @@ const SearchResult = ({ businessInfo }) => {
                                 className="align-middle"
                             >
                                 <th scope="row">{index + 1}</th>
-                                <td className="align-middle"><img className="business-img" src={info.image_url} alt={info.name} /></td>
+                                <td className="align-middle">{info.image_url ? <img className="business-img" src={info.image_url} alt={info.name} /> : 'N/A'}</td>
                                 <td className="align-middle">{info.name}</td>
                                 <td className="align-middle">{info.rating}</td>
                                 <td className="align-middle">{(info.distance / 1609.34).toFixed(1)}</td>

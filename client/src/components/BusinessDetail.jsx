@@ -80,27 +80,30 @@ const BusinessDetail = ({ detailInfo }) => {
                     <a href={`https://www.facebook.com/sharer/sharer.php?u=${detailInfo.url}`} target="_blank"><i className="bi bi-facebook"></i></a></p>
             </div>
 
-            <div className="col-12">
-                <div id="carouselControls" className="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="false">
-                    <div className="carousel-inner">
-                        {detailInfo.photos.map((photo, index) => {
-                            return (
-                                <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={index} data-bs-interval="6000">
-                                    <img src={photo} className="d-block img-fluid mx-auto" style={{ width: "350px", height: "350px" }} alt="..." />
-                                </div>
-                            )
-                        })}
+            {detailInfo.photos && detailInfo.photos.length > 0 && (
+                <div className="col-12">
+                    <div id="carouselControls" className="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="false">
+                        <div className="carousel-inner">
+                            {detailInfo.photos.map((photo, index) => {
+                                return (
+                                    <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={index} data-bs-interval="6000">
+                                        <img src={photo} className="d-block img-fluid mx-auto" style={{ width: "350px", height: "350px" }} alt="..." />
+                                    </div>
+                                )
+                            })}
+                        </div>
+                        <button className="carousel-control-prev mr-3" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
+                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Previous</span>
+                        </button>
+                        <button className="carousel-control-next ml-3" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
+                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Next</span>
+                        </button>
                     </div>
-                    <button className="carousel-control-prev mr-3" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
-                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span className="visually-hidden">Previous</span>
-                    </button>
-                    <button className="carousel-control-next ml-3" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
-                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span className="visually-hidden">Next</span>
-                    </button>
                 </div>
-            </div>
+            )}
+
         </div>
     )
 }
