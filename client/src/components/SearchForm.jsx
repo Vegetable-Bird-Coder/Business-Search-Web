@@ -74,6 +74,7 @@ const SearchForm = () => {
         } catch (err) {
             console.log(err);
         }
+        dispatch(unloadDetailInfo());
     }
 
     const handleReset = () => {
